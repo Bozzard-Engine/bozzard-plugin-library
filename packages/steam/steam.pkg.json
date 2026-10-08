@@ -1,0 +1,141 @@
+{
+  "$schema": "../../schema/pkg.schema.json",
+  "kennel": 1,
+  "name": "steam",
+  "version": "1.0.0",
+  "title": "Steam",
+  "summary": "Steamworks API redistributables in SDK layout, plus starter rules scripts for Steam lobbies and host-authoritative multiplayer.",
+  "category": "integration",
+  "tags": [
+    "steam",
+    "steamworks",
+    "multiplayer",
+    "networking",
+    "lobbies"
+  ],
+  "authors": [
+    "The Bozzard Authors"
+  ],
+  "license": "MIT OR Apache-2.0",
+  "repository": "https://github.com/Bozzard-Engine/bozzard-plugin-library",
+  "engine": {
+    "bozzard": ">=0.1.0",
+    "script_api": 1,
+    "features": [
+      "steam"
+    ]
+  },
+  "build_env": {
+    "STEAM_SDK_LOCATION": "sdk"
+  },
+  "bins": [
+    {
+      "targets": [
+        "linux-x86_64"
+      ],
+      "path": "sdk/redistributable_bin/linux64/libsteam_api.so",
+      "bytes": 383432,
+      "sha256": "ec4797f76a206eb0af627af0f0788eb5a2eabf5dee38ee0a6affbaa44a645f4e",
+      "license": "LicenseRef-Steamworks-SDK",
+      "source": {
+        "url": "https://static.crates.io/crates/steamworks-sys/steamworks-sys-0.13.0.crate",
+        "sha256": "ae139f051204a4af015d4f0ed3a1f7a51020d03a44c7cf249168c543d88131e9",
+        "archive": "tar.gz",
+        "member": "steamworks-sys-0.13.0/lib/steam/redistributable_bin/linux64/libsteam_api.so"
+      }
+    },
+    {
+      "targets": [
+        "linux-aarch64"
+      ],
+      "path": "sdk/redistributable_bin/linuxarm64/libsteam_api.so",
+      "bytes": 381904,
+      "sha256": "179bfb241de94c0320755b558d91edb0004f72d98bf7ad6f1147f9ada835dcbc",
+      "license": "LicenseRef-Steamworks-SDK",
+      "source": {
+        "url": "https://static.crates.io/crates/steamworks-sys/steamworks-sys-0.13.0.crate",
+        "sha256": "ae139f051204a4af015d4f0ed3a1f7a51020d03a44c7cf249168c543d88131e9",
+        "archive": "tar.gz",
+        "member": "steamworks-sys-0.13.0/lib/steam/redistributable_bin/linuxarm64/libsteam_api.so"
+      }
+    },
+    {
+      "targets": [
+        "macos-x86_64",
+        "macos-aarch64"
+      ],
+      "path": "sdk/redistributable_bin/osx/libsteam_api.dylib",
+      "bytes": 427968,
+      "sha256": "1e2282e1032851e423b501c2c483586793f1d5e11585edaae4c78d6a3abad1eb",
+      "license": "LicenseRef-Steamworks-SDK",
+      "source": {
+        "url": "https://static.crates.io/crates/steamworks-sys/steamworks-sys-0.13.0.crate",
+        "sha256": "ae139f051204a4af015d4f0ed3a1f7a51020d03a44c7cf249168c543d88131e9",
+        "archive": "tar.gz",
+        "member": "steamworks-sys-0.13.0/lib/steam/redistributable_bin/osx/libsteam_api.dylib"
+      }
+    },
+    {
+      "targets": [
+        "windows-x86_64"
+      ],
+      "path": "sdk/redistributable_bin/win64/steam_api64.dll",
+      "bytes": 317080,
+      "sha256": "eb17909a76668cf9ae0b92a618a34a50f6c73d3a6787cb4dd8ce36a8b10bfb75",
+      "license": "LicenseRef-Steamworks-SDK",
+      "source": {
+        "url": "https://static.crates.io/crates/steamworks-sys/steamworks-sys-0.13.0.crate",
+        "sha256": "ae139f051204a4af015d4f0ed3a1f7a51020d03a44c7cf249168c543d88131e9",
+        "archive": "tar.gz",
+        "member": "steamworks-sys-0.13.0/lib/steam/redistributable_bin/win64/steam_api64.dll"
+      }
+    },
+    {
+      "targets": [
+        "windows-x86_64"
+      ],
+      "path": "sdk/redistributable_bin/win64/steam_api64.lib",
+      "bytes": 365644,
+      "sha256": "37e58b9bf3c1097dfdffb88e79370c9638bf17eaa4d266e4907cd12cc16a1935",
+      "license": "LicenseRef-Steamworks-SDK",
+      "source": {
+        "url": "https://static.crates.io/crates/steamworks-sys/steamworks-sys-0.13.0.crate",
+        "sha256": "ae139f051204a4af015d4f0ed3a1f7a51020d03a44c7cf249168c543d88131e9",
+        "archive": "tar.gz",
+        "member": "steamworks-sys-0.13.0/lib/steam/redistributable_bin/win64/steam_api64.lib"
+      }
+    }
+  ],
+  "scripts": [
+    {
+      "id": "steam/player",
+      "path": "scripts/player.rhai",
+      "bytes": 1719,
+      "sha256": "a4b9dfdb58ac363127810a1096c6f180b2b6cccbca742f673cfff75864ac41c3"
+    },
+    {
+      "id": "steam/round",
+      "path": "scripts/round.rhai",
+      "bytes": 2570,
+      "sha256": "0174754dc273ed300f7b47384664210f74d75511b90e45f8e1f9b0ec860f8d9b"
+    },
+    {
+      "id": "steam/pipes",
+      "path": "scripts/pipes.rhai",
+      "bytes": 744,
+      "sha256": "81fbad86b720154652900e9d64a8819d78de1bf90d9eaeecc2da1866ddd8c32a"
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4173,
+      "sha256": "2e6fa16ff5e0e57a0816b40d84a8894983432a29842fc22c3d6bbbe6dbbf073e"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 1001,
+      "sha256": "002d2d3ab3676f14f154804d9ed28609e322b56dcfba1f46043848477fc50a80"
+    }
+  ]
+}

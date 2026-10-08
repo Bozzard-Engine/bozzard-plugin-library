@@ -1,0 +1,2 @@
+# Package payloads are pinned by SHA-256; never rewrite line endings.
+* -text

@@ -1,0 +1,64 @@
+name: Kennel check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  # The engine whose `bozzard-project kennel check` validates this registry. Bump it when the
+  # Kennel format or checks change.
+  BOZZARD_REPOSITORY: kaz0r/Bozzard
+  BOZZARD_REV: 618b10e42c2c8160facba9c9e2a3117e4a2259fe
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: registry
+          fetch-depth: 0
+
+      - name: Require a version bump for changed packages
+        if: github.event_name == 'pull_request'
+        working-directory: registry
+        env:
+          BASE: origin/${{ github.base_ref }}
+        run: |
+          status=0
+          for name in $(git diff --name-only "$BASE"...HEAD -- packages | cut -d/ -f2 | sort -u); do
+            manifest="packages/$name/$name.pkg.json"
+            [ -f "$manifest" ] || continue
+            old=$(git show "$BASE:$manifest" 2>/dev/null | jq -r .version) || continue
+            new=$(jq -r .version "$manifest")
+            if [ "$old" = "$new" ]; then
+              echo "::error file=$manifest::$name changed without a version bump (still $new)"
+              status=1
+            fi
+          done
+          exit $status
+
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.BOZZARD_REPOSITORY }}
+          ref: ${{ env.BOZZARD_REV }}
+          path: bozzard
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            bozzard/target
+          key: kennel-${{ runner.os }}-${{ env.BOZZARD_REV }}
+
+      - name: Build bozzard-project
+        working-directory: bozzard
+        # rust-toolchain.toml in the engine pins the compiler.
+        run: cargo build --locked --release -p bozzard-project
+
+      - name: Check the registry
+        run: bozzard/target/release/bozzard-project kennel check registry --fetch

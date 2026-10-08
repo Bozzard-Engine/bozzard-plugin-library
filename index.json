@@ -1,0 +1,21 @@
+{
+  "$schema": "schema/index.schema.json",
+  "kennel": 1,
+  "packages": {
+    "steam": {
+      "version": "1.0.0",
+      "title": "Steam",
+      "summary": "Steamworks API redistributables in SDK layout, plus starter rules scripts for Steam lobbies and host-authoritative multiplayer.",
+      "category": "integration",
+      "tags": [
+        "steam",
+        "steamworks",
+        "multiplayer",
+        "networking",
+        "lobbies"
+      ],
+      "manifest": "packages/steam/steam.pkg.json",
+      "sha256": "6deba93d7fe1003ab04f520a33e6fa19b73b59c58f0d0834ff66bc4f56542093"
+    }
+  }
+}
