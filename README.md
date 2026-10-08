@@ -21,7 +21,11 @@ source and verifies them against pinned hashes.
 
 ## Install a package
 
-Kennel ships with Bozzard's `bozzard-project` tool:
+In the Bozzard editor, click **Kennel** in the menu bar. The store browses this registry,
+checks each package against your editor build, installs it into the open project, and adds
+its scripts to the scene with **Add to scene**.
+
+From a terminal, Kennel ships with Bozzard's `bozzard-project` tool:
 
 ```sh
 bozzard-project kennel list                         # browse; add a word to search

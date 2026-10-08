@@ -9,7 +9,7 @@ env:
   # The engine whose `bozzard-project kennel check` validates this registry. Bump it when the
   # Kennel format or checks change.
   BOZZARD_REPOSITORY: kaz0r/Bozzard
-  BOZZARD_REV: 618b10e42c2c8160facba9c9e2a3117e4a2259fe
+  BOZZARD_REV: aa955777a50fb7f928af32e160ff1c18df1f6869
   CARGO_TERM_COLOR: always
 
 jobs:
